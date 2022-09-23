@@ -22,7 +22,7 @@ Example of use:
 - Decrypt localization file to plaintext file:
 
 ```
-    BDOLangReplacementToolHelper.exe -d ads\languagedata_en.loc languagedata_en.txt
+    BDOLangReplacementToolHelper.exe -d ads\languagedata_en.loc languagedata_en.txt
 ```
    
 - Encrypt plaintext file to localization file:
