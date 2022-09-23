@@ -33,7 +33,7 @@ jobs:
       run: nuget restore ${{env.SOLUTION_FILE_PATH}}
       
     - name: Install vcpkg
-      uses: lukka/run-vcpkg@v10
+      uses: lukka/run-vcpkg@v10.3
     
     - name: Install pkgs
       working-directory: ${{env.GITHUB_WORKSPACE}}/vcpkg
