@@ -32,13 +32,21 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: nuget restore ${{env.SOLUTION_FILE_PATH}}
       
-    - name: Install vcpkg
-      uses: lukka/run-vcpkg@v7
-      with:
-        setupOnly: true
-    - run: |
-        $VCPKG_ROOT/vcpkg install install opencc zlib
-      shell: bash
+    - name: Fetch vcpkg
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: git pull --recurse-submodules
+      
+    - name: Initialize vcpkg
+      working-directory: ${{env.GITHUB_WORKSPACE}}/vcpkg/
+      run: .\bootstrap-vcpkg.bat
+
+    - name: Install packages
+      working-directory: ${{env.GITHUB_WORKSPACE}}/vcpkg/
+      run: .\vcpkg.exe install opencc zlib
+      
+    - name: Intergrate install
+      working-directory: ${{env.GITHUB_WORKSPACE}}/vcpkg/
+      run: .\vcpkg.exe integrate install
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
