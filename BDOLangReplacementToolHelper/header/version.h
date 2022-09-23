@@ -1,0 +1,2 @@
+#pragma once
+#define BDOLANGREPLTOOLHELPERVER "1.0.0.0"
