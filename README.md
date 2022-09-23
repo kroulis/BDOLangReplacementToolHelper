@@ -1,4 +1,4 @@
-# BDOLangReplacementToolHelper
+# BDOLangReplacementToolHelper [![Build](https://github.com/kroulis/BDOLangReplacementToolHelper/actions/workflows/msbuild.yml/badge.svg)](https://github.com/kroulis/BDOLangReplacementToolHelper/actions/workflows/msbuild.yml)
 
 Utilities can be used to decrypt / encrypt / merge / diff / translate tw_cn to zh_ch localization files for Black Desert Online  
 This tool is supposed to be used along with BDOLanguageReplacementTool to achieve ease language file replacement. Check [kroulis/BDOLanguageReplacementTool](https://github.com/kroulis/BDOLanguageReplacementTool) for more information.
