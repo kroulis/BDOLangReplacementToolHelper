@@ -42,7 +42,7 @@ jobs:
 
     - name: Install packages
       working-directory: ${{env.GITHUB_WORKSPACE}}/vcpkg/
-      run: .\vcpkg.exe install opencc zlib
+      run: .\vcpkg.exe install opencc zlib --triplet x86-windows
       
     - name: Intergrate install
       working-directory: ${{env.GITHUB_WORKSPACE}}/vcpkg/
