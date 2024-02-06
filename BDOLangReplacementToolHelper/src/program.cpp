@@ -6,6 +6,10 @@
 #include "BDO_convert.h"
 #include "BDO_diff.h"
 #include "BDO_merge.h"
+#include "BDO_match.h"
+#include "BDO_replace.h"
+#include "BDO_rename.h"
+#include "BDO_remove.h"
 #include "version.h"
 using namespace std;
 
@@ -110,12 +114,15 @@ void usage()
 {
 	cout << "BDOLangReplacementToolHelper Version: " << BDOLANGREPLTOOLHELPERVER << endl;
 	cout << "Usage:" << endl;
-	cout << "BDOLangReplacementToolHelper [-e|-d|-f|-m|-zh_cn|-lic] <srcFilePath> <outputFilePath> [additionalFiles]" << endl;
+	cout << "BDOLangReplacementToolHelper [-e|-d|-f|-m|-r|-rm|-rn|-zh_cn|-lic] <srcFilePath> <outputFilePath> [additionalFiles]" << endl;
 	cout << "Parameters:" << endl;
 	cout << "-e     : Encrypt plaintext file to localization file" << endl;
 	cout << "-d     : Decrypt localization file to plaintext file" << endl;
-	cout << "-f     : Calculate difference between srcFile and additionalFiles. Output the extra phases in srcFile to outputFilePath" << endl;
+	cout << "-f     : Calculate difference between srcFile and additionalFiles. Output the extra phrases in srcFile to outputFilePath" << endl;
 	cout << "-m     : Merge multiple plaintext file together. The later in the additionalFile list, the higher the prioriry for replac translate localization files for Black Desert Online ement." << endl;
+	cout << "-r     : Replace phrases from one localization file (srcFile) to another localization file (in additionalFiles) specified by a config csv file (in additionalFiles)" << endl;
+	cout << "-rm    : Remove phrases in additional files from the source file" << endl;
+	cout << "-rn    : Rename some phrases with another id specified by a config csv file (in additionalFiles)" << endl;
 	cout << "-zh_cn : Convert TW_CN plain text to ZH_CN plain text" << endl;
 	cout << "-lic   : List open source third party libraries' licences" << endl;
 }
@@ -145,6 +152,15 @@ int main(int argc, char** argv)
 			}
 			return diff(argv[2], argv[3], additionalFiles);
 		}
+		else if (strcmp(argv[1], "-html") == 0)
+		{
+			vector<char*> additionalFiles;
+			for (int i = 4; i < argc; i++)
+			{
+				additionalFiles.push_back(argv[i]);
+			}
+			return diff2(argv[2], argv[3], additionalFiles);
+		}
 		else if (strcmp(argv[1], "-m") == 0)
 		{
 			vector<char*> additionalFiles;
@@ -153,6 +169,33 @@ int main(int argc, char** argv)
 				additionalFiles.push_back(argv[i]);
 			}
 			return merge(argv[2], argv[3], additionalFiles);
+		}
+		else if (strcmp(argv[1], "-r") == 0)
+		{
+			vector<char*> additionalFiles;
+			for (int i = 4; i < argc; i++)
+			{
+				additionalFiles.push_back(argv[i]);
+			}
+			return replace(argv[2], argv[3], additionalFiles);
+		}
+		else if (strcmp(argv[1], "-rm") == 0)
+		{
+			vector<char*> additionalFiles;
+			for (int i = 4; i < argc; i++)
+			{
+				additionalFiles.push_back(argv[i]);
+			}
+			return remove(argv[2], argv[3], additionalFiles);
+		}
+		else if (strcmp(argv[1], "-rn") == 0)
+		{
+			vector<char*> additionalFiles;
+			for (int i = 4; i < argc; i++)
+			{
+				additionalFiles.push_back(argv[i]);
+			}
+			return rename(argv[2], argv[3], additionalFiles);
 		}
 		usage();
 		return 1;

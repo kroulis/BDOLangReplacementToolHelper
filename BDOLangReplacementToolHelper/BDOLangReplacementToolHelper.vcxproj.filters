@@ -24,7 +24,7 @@
     <ClCompile Include="src\BDO_merge.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BDO_phase.cpp">
+    <ClCompile Include="src\BDO_phrase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\program.cpp">
@@ -37,6 +37,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BDOcrypt\BDO_encrypt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BDO_match.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BDO_replace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BDO_rename.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BDO_remove.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,7 +68,7 @@
     <ClInclude Include="header\BDO_merge.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\BDO_phase.h">
+    <ClInclude Include="header\BDO_phrase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\benchmark.h">
@@ -66,6 +78,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\BDO_match.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\BDO_replace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\BDO_rename.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\BDO_remove.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

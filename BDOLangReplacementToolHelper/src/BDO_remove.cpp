@@ -1,13 +1,13 @@
 #include <iostream>
 #include <fstream>
 #include <codecvt>
-#include "BDO_merge.h"
+#include "BDO_remove.h"
 #include "BDO_phrase.h"
 #include "UTF16Facet.h"
 #include "benchmark.h"
 using namespace std;
 
-void print_progress_merge(size_t current, size_t max)
+void print_progress_remove(size_t current, size_t max)
 {
 	double state = current * 1.0 / max * 100.0;
 	string status = "";
@@ -23,9 +23,10 @@ void print_progress_merge(size_t current, size_t max)
 	printf("(%d/%d) [%s]\r", current, max, status.c_str());
 }
 
-int merge(char* srcFileName, char* outFileName, vector<char*> additionalFiles)
+int remove(char* srcFileName, char* outFileName, vector<char*> additionalFiles)
 {
 	map<PhraseId, Phrase> phraseMap;
+	map<PhraseId, Phrase> phraseMap2;
 
 	// start benchmark
 	auto start = chrono::steady_clock::now();
@@ -43,8 +44,8 @@ int merge(char* srcFileName, char* outFileName, vector<char*> additionalFiles)
 
 	for (auto i = 0; i < additionalFiles.size(); i++)
 	{
-		printf("Reading replacement phrases from: %s\r", additionalFiles[i]);
-		if ((phrasesFound = readPhrasesFromFile(additionalFiles[i], phraseMap, true)) == -1)
+		printf("Reading removing phrases from: %s\r", additionalFiles[i]);
+		if ((phrasesFound = readPhrasesFromFile(additionalFiles[i], phraseMap2, false)) == -1)
 		{
 			printf("Failed to read additional file: %s\n", additionalFiles[i]);
 		}
@@ -52,6 +53,11 @@ int merge(char* srcFileName, char* outFileName, vector<char*> additionalFiles)
 		{
 			printf("Found %d phrases from %s\n", phrasesFound, additionalFiles[i]);
 		}
+	}
+
+	for (auto pp : phraseMap2)
+	{
+		phraseMap.erase(pp.first);
 	}
 
 	int counter = 0;
@@ -70,16 +76,16 @@ int merge(char* srcFileName, char* outFileName, vector<char*> additionalFiles)
 
 	for (auto itr = phraseMap.begin(); itr != phraseMap.end(); ++itr)
 	{
-			counter++;
-			wstring phrase = itr->second.toString();
-			outFile << phrase;
-			print_progress_merge(counter, total);
+		counter++;
+		wstring phrase = itr->second.toString();
+		outFile << phrase;
+		print_progress_remove(counter, total);
 	}
 
 	outFile.flush();
 	outFile.close();
 
-	cout << "Merged: " << counter << " phrases are written to " << outFileName <<endl;
+	cout << "After Remove: " << counter << " phrases are written to " << outFileName << endl;
 	cout << "Elapsed(ms)=" << since(start).count() << endl;
 	return 0;
 }

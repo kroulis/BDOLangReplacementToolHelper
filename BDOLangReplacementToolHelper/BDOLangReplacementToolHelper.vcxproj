@@ -157,8 +157,12 @@
     <ClCompile Include="BDOcrypt\BDO_encrypt.cpp" />
     <ClCompile Include="src\BDO_convert.cpp" />
     <ClCompile Include="src\BDO_diff.cpp" />
+    <ClCompile Include="src\BDO_match.cpp" />
     <ClCompile Include="src\BDO_merge.cpp" />
-    <ClCompile Include="src\BDO_phase.cpp" />
+    <ClCompile Include="src\BDO_phrase.cpp" />
+    <ClCompile Include="src\BDO_remove.cpp" />
+    <ClCompile Include="src\BDO_rename.cpp" />
+    <ClCompile Include="src\BDO_replace.cpp" />
     <ClCompile Include="src\program.cpp" />
     <ClCompile Include="src\UTF16Facet.cpp" />
   </ItemGroup>
@@ -167,8 +171,12 @@
     <ClInclude Include="header\BDO_decrypt.h" />
     <ClInclude Include="header\BDO_diff.h" />
     <ClInclude Include="header\BDO_encrypt.h" />
+    <ClInclude Include="header\BDO_match.h" />
     <ClInclude Include="header\BDO_merge.h" />
-    <ClInclude Include="header\BDO_phase.h" />
+    <ClInclude Include="header\BDO_phrase.h" />
+    <ClInclude Include="header\BDO_remove.h" />
+    <ClInclude Include="header\BDO_rename.h" />
+    <ClInclude Include="header\BDO_replace.h" />
     <ClInclude Include="header\benchmark.h" />
     <ClInclude Include="header\UTF16Facet.h" />
     <ClInclude Include="header\version.h" />

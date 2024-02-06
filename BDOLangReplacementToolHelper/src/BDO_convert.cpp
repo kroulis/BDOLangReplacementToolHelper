@@ -10,7 +10,7 @@ using namespace std;
 #define MAX_LINE_LENGTH 8000
 
 
-void print_progress_convert(size_t current, size_t max, size_t phases)
+void print_progress_convert(size_t current, size_t max, size_t phrases)
 {
 	double state = current * 1.0 / max * 100.0;
 	string status = "";
@@ -23,7 +23,7 @@ void print_progress_convert(size_t current, size_t max, size_t phases)
 	{
 		status += "*";
 	}
-	printf("<%d> (%d/%d) [%s]\r", phases, current, max, status.c_str());
+	printf("<%d> (%d/%d) [%s]\r", phrases, current, max, status.c_str());
 }
 
 int convert_twcn2zhcn(char* srcFileName, char* outFileName)
@@ -109,7 +109,7 @@ int convert_twcn2zhcn(char* srcFileName, char* outFileName)
 
 	outFile.flush();
 	outFile.close();
-	printf("\nSuccessfully converted %d phases to simplified chinese\n", counter);
+	printf("\nSuccessfully converted %d phrases to simplified chinese\n", counter);
 	std::cout << "Elapsed(ms)=" << since(start).count() << std::endl;
 	return 0;
 }

@@ -52,7 +52,7 @@ int encrypt(char* srcFileName, char *outFileName)
 		rewind(srcFile);
 	}
 
-	printf("Reading phases...\r");
+	printf("Reading phrases...\r");
 	while (1){
 		wmemset(strBuff, CHAR_NULL, MAX_BUFF_SIZE);
 

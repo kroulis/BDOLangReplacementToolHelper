@@ -1,15 +1,15 @@
 #include <iostream>
 #include <fstream>
-#include "BDO_phase.h"
+#include "BDO_phrase.h"
 #include "UTF16Facet.h"
 using namespace std;
 
-void print_progress_phase(size_t current, size_t max, size_t phases)
+void print_progress_phrase(size_t current, size_t max, size_t phrases)
 {
-	printf("Reading %d phases (%d/%d)\r", phases, current, max);
+	printf("Reading %d phrases (%d/%d)\r", phrases, current, max);
 }
 
-int readPhasesFromFile(const char* fileName, map<PhaseId, Phase> &phaseMap, bool setExist)
+int readPhrasesFromFile(const char* fileName, map<PhraseId, Phrase> &phraseMap, bool setExist)
 {
 	ifstream srcFile(fileName, ios::binary);
 	if (srcFile.fail()) {
@@ -57,23 +57,23 @@ int readPhasesFromFile(const char* fileName, map<PhaseId, Phase> &phaseMap, bool
 
 		strSize = wcslen(strBuff);
 		localization = wstring(strBuff);
-		Phase phase(strType, strID1, strID2, strID3, strID4, localization);
+		Phrase phrase(strType, strID1, strID2, strID3, strID4, localization);
 		if (setExist)
-			phase.setExist();
-		auto phaseFound = phaseMap.find(phase.id);
-		if (phaseFound == phaseMap.end())
+			phrase.setExist();
+		auto phraseFound = phraseMap.find(phrase.id);
+		if (phraseFound == phraseMap.end())
 		{
-			phaseMap.insert(pair<PhaseId, Phase>(phase.id, phase));
+			phraseMap.insert(pair<PhraseId, Phrase>(phrase.id, phrase));
 		}
 		else
 		{
-			phaseMap[phase.id] = phase;
+			phraseMap[phrase.id] = phrase;
 		}
 
 		last = next + 1;
 		counter++;
 
-		print_progress_phase(last, inSize, counter);
+		print_progress_phrase(last, inSize, counter);
 	}
 
 	return counter;
