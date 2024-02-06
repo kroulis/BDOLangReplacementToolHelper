@@ -9,7 +9,7 @@ const wchar_t CHAR_NULL = 0x0000;
 const wchar_t CHAR_CR = 0x000D;
 const wchar_t CHAR_LF = 0x000A;
 const wchar_t BOM_UTF16LE = 0xFEFF;
-#define MAX_BUFF_SIZE 4096
+#define MAX_BUFF_SIZE 16384
 const unsigned long MaxCode = 0x10ffffUL;
 #define UTF16_MODE (codecvt_mode)(generate_header | little_endian)
 
